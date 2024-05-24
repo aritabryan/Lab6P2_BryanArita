@@ -4,6 +4,8 @@
  */
 package lab6p2_bryanarita;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author arita
@@ -11,14 +13,19 @@ package lab6p2_bryanarita;
 public class TransaccionGUI extends javax.swing.JFrame {
 
     Usuarios usuario;
+    ArrayList<Usuarios> arrayUsuarios;
 
     public TransaccionGUI() {
     }
 
+    public TransaccionGUI(ArrayList<Usuarios> arrayUsuarios) {
+        this.arrayUsuarios = arrayUsuarios;
+    }
+
+    
     public TransaccionGUI(Usuarios usuario) {
         this.usuario = usuario;
         initComponents();
-
     }
 
     /**
@@ -79,8 +86,11 @@ public class TransaccionGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_BOTONretirarActionPerformed
 
     private void BOTONdepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTONdepositarActionPerformed
+        
         Depositar_TransderirFrame DEPframe = new Depositar_TransderirFrame();
+        this.setVisible(false);
         DEPframe.setVisible(true);
+        DEPframe.setLocationRelativeTo(this);
     }//GEN-LAST:event_BOTONdepositarActionPerformed
 
     /**

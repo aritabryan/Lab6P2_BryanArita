@@ -22,6 +22,11 @@ public class RetirarDineroFrame extends javax.swing.JFrame {
     public RetirarDineroFrame() {
     }
 
+    public RetirarDineroFrame(ArrayList<Usuarios> arrayUsuarios) {
+        initComponents();
+        this.arrayUsuarios = arrayUsuarios;
+    }
+
     public RetirarDineroFrame(Usuarios usuario) {
         initComponents();
         this.usuario = usuario;

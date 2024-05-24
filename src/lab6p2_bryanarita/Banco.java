@@ -15,7 +15,6 @@ public class Banco extends javax.swing.JFrame {
 
     Usuarios nuevoUsuario;
     ArrayList<Usuarios> arrayUsuarios;
-
     public Banco() {
     }
 

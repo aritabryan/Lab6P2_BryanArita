@@ -4,21 +4,28 @@
  */
 package lab6p2_bryanarita;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author arita
  */
 public class Depositar_TransderirFrame extends javax.swing.JFrame {
 
-          private Usuarios usuario;
-    
-  public Depositar_TransderirFrame(){}
+    private Usuarios usuario;
+    ArrayList<Usuarios> arrayUsuarios;
+
+    public Depositar_TransderirFrame() {
+    }
 
     public Depositar_TransderirFrame(Usuarios usuario) {
         initComponents();
-        
     }
 
+    public Depositar_TransderirFrame(ArrayList<Usuarios> arrayUsuarios) {
+        this.arrayUsuarios = arrayUsuarios;
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,6 +47,7 @@ public class Depositar_TransderirFrame extends javax.swing.JFrame {
         BotonTransferir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(100, 100));
         setMinimumSize(new java.awt.Dimension(500, 700));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
@@ -68,6 +76,11 @@ public class Depositar_TransderirFrame extends javax.swing.JFrame {
         });
 
         BotonTransferir.setText("Transferir");
+        BotonTransferir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonTransferirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,15 +150,19 @@ public class Depositar_TransderirFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDepositarActionPerformed
-       TextDepositar.setText("");
-        String din=TextDepositar.getText();
-        double dinerodepositado= Double.parseDouble(din);
-        usuario.setDinero(usuario.getDinero()+dinerodepositado);
+        TextDepositar.setText("");
+        String din = TextDepositar.getText();
+        double dinerodepositado = Double.parseDouble(din);
+        usuario.setDinero(usuario.getDinero() + dinerodepositado);
     }//GEN-LAST:event_BotonDepositarActionPerformed
 
     private void TextPersonaTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPersonaTransferirActionPerformed
-        
+
     }//GEN-LAST:event_TextPersonaTransferirActionPerformed
+
+    private void BotonTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTransferirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonTransferirActionPerformed
 
     /**
      * @param args the command line arguments
