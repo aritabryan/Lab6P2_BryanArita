@@ -16,20 +16,21 @@ public class RetirarDineroFrame extends javax.swing.JFrame {
     ArrayList<Usuarios> arrayUsuarios;
     private Usuarios usuario;
 
-    public RetirarDineroFrame() {
-    }
-
     boolean BotonVerdePresionado = false;
     boolean BotonRojoPresionado = false;
 
+    public RetirarDineroFrame() {
+    }
+
     public RetirarDineroFrame(Usuarios usuario) {
         initComponents();
+        this.usuario = usuario;
         String Dinero = String.valueOf(usuario.getDinero());
         LabelActual.setText(Dinero);
         jLabel4.setText(usuario.getNombreCompleto());
-        if (BotonVerdePresionado) {
-            Retirar(usuario);
-        }
+//        if (BotonVerdePresionado) {
+//            Retirar(usuario);
+//        }
     }
 
     public void Retirar(Usuarios usuario) {
@@ -304,7 +305,8 @@ public class RetirarDineroFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton0ActionPerformed
 
     private void BotonVerdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVerdeActionPerformed
-        BotonVerdePresionado = true;
+//        BotonVerdePresionado = true;
+        Retirar(usuario);
         TransaccionGUI tran = new TransaccionGUI();
         tran.setVisible(true);
         this.dispose();

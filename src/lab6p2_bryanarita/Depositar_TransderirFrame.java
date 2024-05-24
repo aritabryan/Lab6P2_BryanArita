@@ -10,11 +10,13 @@ package lab6p2_bryanarita;
  */
 public class Depositar_TransderirFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Depositar_TransderirFrame
-     */
-    public Depositar_TransderirFrame() {
+          private Usuarios usuario;
+    
+  public Depositar_TransderirFrame(){}
+
+    public Depositar_TransderirFrame(Usuarios usuario) {
         initComponents();
+        
     }
 
     /**
@@ -38,6 +40,7 @@ public class Depositar_TransderirFrame extends javax.swing.JFrame {
         BotonTransferir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(500, 700));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel1.setText("Depositar");
@@ -45,6 +48,11 @@ public class Depositar_TransderirFrame extends javax.swing.JFrame {
         jLabel2.setText("Cantidad a Depositar:");
 
         BotonDepositar.setText("Depositar");
+        BotonDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonDepositarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel3.setText("Transferir");
@@ -52,6 +60,12 @@ public class Depositar_TransderirFrame extends javax.swing.JFrame {
         jLabel4.setText("Cuenta a la Persona a Transferir:");
 
         jLabel5.setText("Cantidad a Transferir:");
+
+        TextPersonaTransferir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextPersonaTransferirActionPerformed(evt);
+            }
+        });
 
         BotonTransferir.setText("Transferir");
 
@@ -63,16 +77,9 @@ public class Depositar_TransderirFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(96, 96, 96))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(85, 85, 85))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(TextCantidadTransferir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
-                                .addComponent(TextPersonaTransferir, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TextCantidadTransferir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                            .addComponent(TextPersonaTransferir, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(146, 146, 146)
@@ -88,8 +95,16 @@ public class Depositar_TransderirFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel5)))))
                 .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(BotonTransferir)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(BotonTransferir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -103,9 +118,9 @@ public class Depositar_TransderirFrame extends javax.swing.JFrame {
                     .addComponent(TextDepositar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(BotonDepositar)
-                .addGap(111, 111, 111)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(TextPersonaTransferir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -120,6 +135,17 @@ public class Depositar_TransderirFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BotonDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDepositarActionPerformed
+       TextDepositar.setText("");
+        String din=TextDepositar.getText();
+        double dinerodepositado= Double.parseDouble(din);
+        usuario.setDinero(usuario.getDinero()+dinerodepositado);
+    }//GEN-LAST:event_BotonDepositarActionPerformed
+
+    private void TextPersonaTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPersonaTransferirActionPerformed
+        
+    }//GEN-LAST:event_TextPersonaTransferirActionPerformed
 
     /**
      * @param args the command line arguments
