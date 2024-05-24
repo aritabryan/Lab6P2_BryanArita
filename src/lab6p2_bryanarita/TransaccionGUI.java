@@ -74,7 +74,7 @@ public class TransaccionGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BOTONretirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTONretirarActionPerformed
-        RetirarDineroFrame retFrame = new RetirarDineroFrame();
+        RetirarDineroFrame retFrame = new RetirarDineroFrame(usuario);
         retFrame.setVisible(true);
     }//GEN-LAST:event_BOTONretirarActionPerformed
 
