@@ -1,21 +1,23 @@
-
 package lab6p2_bryanarita;
+
+import java.util.ArrayList;
 
 public abstract class Usuarios {
 
-    private String NombreCompleto, NombreDeUsuario, Contrasena;
+    private String NombreCompleto, NombreDeUsuario, Contrasena, CuentaBancaria;
     private double Dinero;
-    private int CuentaBancaria;
+    private ArrayList<Transaccion> transacciones;
 
     public Usuarios() {
     }
 
-    public Usuarios(String NombreCompleto, String NombreDeUsuario, String Contrasena, double Dinero, int CuentaBancaria) {
+    public Usuarios(String NombreCompleto, String NombreDeUsuario, String Contrasena, double Dinero, String CuentaBancaria) {
         this.NombreCompleto = NombreCompleto;
         this.NombreDeUsuario = NombreDeUsuario;
         this.Contrasena = Contrasena;
         this.Dinero = Dinero;
         this.CuentaBancaria = CuentaBancaria;
+        this.transacciones = new ArrayList<>();
     }
 
     public String getNombreCompleto() {
@@ -50,13 +52,20 @@ public abstract class Usuarios {
         this.Dinero = Dinero;
     }
 
-    public int getCuentaBancaria() {
+    public String getCuentaBancaria() {
         return CuentaBancaria;
     }
 
-    public void setCuentaBancaria(int CuentaBancaria) {
+    public void setCuentaBancaria(String CuentaBancaria) {
         this.CuentaBancaria = CuentaBancaria;
     }
 
-    
+    public ArrayList<Transaccion> getTransacciones() {
+        return transacciones;
+    }
+
+    public void setTransacciones(ArrayList<Transaccion> transacciones) {
+        this.transacciones = transacciones;
+    }
+
 }

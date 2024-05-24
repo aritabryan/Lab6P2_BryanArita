@@ -16,6 +16,10 @@ public class Lab6P2_BryanArita {
     public static void main(String[] args) {
         Banco BancoFrame = new Banco();
         BancoFrame.setVisible(true);
+        Usuarios UsuNormal2 = new Usuarios_Normales(0, "Jose Lopez", "JoseLO", "1234", 600, "34567");
+        Usuarios UsuNormal1 = new Usuarios_Normales(0, "Eduardo Mejia", "EduMej", "1234", 300, "23456");
+        Usuarios UsuPremium1 = new Usuarios_Premium(3000, "Jose Luis", "JL", "1234", 200, "12345");
+        Usuarios UsuPremium2 = new Usuarios_Premium(3000, "Maria Teresa", "LOLA", "1234", 500, "45678");
 
         System.out.println("[1]Crear Usuario Normal\n[2]Crear Usuario Premium\n[3]Salir");
         int OpcionMenu = duki.nextInt();
@@ -45,12 +49,12 @@ public class Lab6P2_BryanArita {
                 tieneMayuscula = true;
             } else if (contrasena.charAt(i) >= 33 && contrasena.charAt(i) <= 64) {
                 tieneCaracterEspecial = true;
-            } else {
-                return false;
             }
         }
-        return true;
-
+        if (tieneMayuscula == true && tieneCaracterEspecial == true) {
+            return true;
+        }
+        return false;
     }
 
     static void MenuUsuarioNormal() {
@@ -58,6 +62,11 @@ public class Lab6P2_BryanArita {
         String NombreCompleto = duko.nextLine();
         System.out.print("Ingrese Nombre de Usuario: ");
         String NombreUsuario = duko.nextLine();
+        while (!UsuarioValido(NombreUsuario)) {
+            System.out.println("Usuario no valido");
+            System.out.print("Ingrese Nombre de Usuario: ");
+            NombreUsuario = duko.nextLine();
+        }
         System.out.print("Ingrese Contrasena: ");
         String Contrasena = duko.nextLine();
         while (!ContrasenaValida(Contrasena)) {
@@ -69,6 +78,13 @@ public class Lab6P2_BryanArita {
         double Dinero = duki.nextDouble();
         System.out.print("Ingrese Cuenta Bancaria: ");
         String CuentaBancaria = duko.nextLine();
+        while (!CuentaValida(CuentaBancaria)) {
+            System.out.println("Cuenta Bancaria no valida");
+            System.out.print("Ingrese Cuenta Bancaria: ");
+            CuentaBancaria = duko.nextLine();
+        }
+        Usuarios UsuNormal = new Usuarios_Normales(0, NombreCompleto, NombreUsuario, Contrasena, Dinero, CuentaBancaria);
+        ArrayUsuarios.add(UsuNormal);
     }
 
     static void MenuUsuarioPremium() {
@@ -76,6 +92,11 @@ public class Lab6P2_BryanArita {
         String NombreCompleto = duko.nextLine();
         System.out.print("Ingrese Nombre de Usuario: ");
         String NombreUsuario = duko.nextLine();
+        while (!UsuarioValido(NombreUsuario)) {
+            System.out.println("Usuario no valido");
+            System.out.print("Ingrese Nombre de Usuario: ");
+            NombreUsuario = duko.nextLine();
+        }
         System.out.print("Ingrese Contrasena: ");
         String Contrasena = duko.nextLine();
         while (!ContrasenaValida(Contrasena)) {
@@ -87,6 +108,30 @@ public class Lab6P2_BryanArita {
         double Dinero = duki.nextDouble();
         System.out.print("Ingrese Cuenta Bancaria: ");
         String CuentaBancaria = duko.nextLine();
+        while (!CuentaValida(CuentaBancaria)) {
+            System.out.println("Cuenta Bancaria no valida");
+            System.out.print("Ingrese Cuenta Bancaria: ");
+            CuentaBancaria = duko.nextLine();
+        }
+        Usuarios UsuPremium = new Usuarios_Premium(3000, NombreCompleto, NombreUsuario, Contrasena, Dinero, CuentaBancaria);
+        ArrayUsuarios.add(UsuPremium);
     }
 
+    static boolean UsuarioValido(String usuario) {
+        for (Usuarios ArrayUsuario : ArrayUsuarios) {
+            if (ArrayUsuario.getNombreDeUsuario().equalsIgnoreCase(usuario)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    static boolean CuentaValida(String Cuenta) {
+        for (Usuarios ArrayUsuario : ArrayUsuarios) {
+            if (ArrayUsuario.getCuentaBancaria().equals(Cuenta)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
