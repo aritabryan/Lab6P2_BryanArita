@@ -108,13 +108,16 @@ public class Banco extends javax.swing.JFrame {
     }//GEN-LAST:event_TextUsuarioActionPerformed
 
     private void BotonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIniciarActionPerformed
-        TransaccionGUI trans = new TransaccionGUI();
+        TransaccionGUI trans;
+        boolean Visible=false;
         for (Usuarios arrayUsuario : arrayUsuarios) {
             if (arrayUsuario.getNombreDeUsuario().equals(TextUsuario.getText()) && arrayUsuario.getContrasena().equals(TextContrasena.getText())) {
+                trans= new TransaccionGUI(arrayUsuario);
                 trans.setVisible(true);
+                Visible=true;
             }
         }
-        if (!trans.isVisible()) {
+        if (!Visible) {
             JOptionPane.showMessageDialog(rootPane, "Nombre de Usuario o Contrasena Incorrecta");
         }
     }//GEN-LAST:event_BotonIniciarActionPerformed

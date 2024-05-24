@@ -10,11 +10,15 @@ package lab6p2_bryanarita;
  */
 public class TransaccionGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TransaccionGUI
-     */
+    Usuarios usuario;
+
     public TransaccionGUI() {
+    }
+
+    public TransaccionGUI(Usuarios usuario) {
+        this.usuario = usuario;
         initComponents();
+
     }
 
     /**
@@ -39,6 +43,11 @@ public class TransaccionGUI extends javax.swing.JFrame {
         });
 
         BOTONdepositar.setText("DEPOSITAR/TRANSFERIR");
+        BOTONdepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BOTONdepositarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,9 +74,14 @@ public class TransaccionGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BOTONretirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTONretirarActionPerformed
-        RetirarDineroFrame retFrame= new RetirarDineroFrame();
+        RetirarDineroFrame retFrame = new RetirarDineroFrame();
         retFrame.setVisible(true);
     }//GEN-LAST:event_BOTONretirarActionPerformed
+
+    private void BOTONdepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTONdepositarActionPerformed
+        Depositar_TransderirFrame DEPframe = new Depositar_TransderirFrame();
+        DEPframe.setVisible(true);
+    }//GEN-LAST:event_BOTONdepositarActionPerformed
 
     /**
      * @param args the command line arguments
