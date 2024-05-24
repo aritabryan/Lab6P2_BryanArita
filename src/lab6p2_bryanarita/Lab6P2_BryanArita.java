@@ -10,16 +10,20 @@ public class Lab6P2_BryanArita {
 
     static Scanner duki = new Scanner(System.in);
     static Scanner duko = new Scanner(System.in);
-    static ArrayList<Transaccion> ArrayTransaccion = new ArrayList<>();
     static ArrayList<Usuarios> ArrayUsuarios = new ArrayList<>();
 
     public static void main(String[] args) {
-        Banco BancoFrame = new Banco();
+        Banco BancoFrame = new Banco(ArrayUsuarios);
         BancoFrame.setVisible(true);
-        Usuarios UsuNormal2 = new Usuarios_Normales(0, "Jose Lopez", "JoseLO", "1234", 600, "34567");
-        Usuarios UsuNormal1 = new Usuarios_Normales(0, "Eduardo Mejia", "EduMej", "1234", 300, "23456");
-        Usuarios UsuPremium1 = new Usuarios_Premium(3000, "Jose Luis", "JL", "1234", 200, "12345");
-        Usuarios UsuPremium2 = new Usuarios_Premium(3000, "Maria Teresa", "LOLA", "1234", 500, "45678");
+        Usuarios UsuNormal2 = new Usuarios_Normales(0, "Jose Lopez", "JoseLO", "Br1234", 600, "34567");
+        Usuarios UsuNormal1 = new Usuarios_Normales(0, "Eduardo Mejia", "EduMej", "Br1234", 300, "23456");
+        Usuarios UsuPremium1 = new Usuarios_Premium(3000, "Jose Luis", "JL", "Br1234", 200, "12345");
+        Usuarios UsuPremium2 = new Usuarios_Premium(3000, "Maria Teresa", "LOLA", "Br1234", 500, "45678");
+
+        ArrayUsuarios.add(UsuPremium2);
+        ArrayUsuarios.add(UsuPremium1);
+        ArrayUsuarios.add(UsuNormal2);
+        ArrayUsuarios.add(UsuNormal1);
 
         System.out.println("[1]Crear Usuario Normal\n[2]Crear Usuario Premium\n[3]Salir");
         int OpcionMenu = duki.nextInt();

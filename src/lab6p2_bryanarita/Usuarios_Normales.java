@@ -18,8 +18,4 @@ private int contTransacciones;
         super(NombreCompleto, NombreDeUsuario, Contrasena, Dinero, CuentaBancaria);
         this.contTransacciones = contTransacciones;
     }
-
-   
-
-
 }

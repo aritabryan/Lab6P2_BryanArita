@@ -4,6 +4,7 @@
  */
 package lab6p2_bryanarita;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,8 +14,13 @@ import javax.swing.JOptionPane;
 public class Banco extends javax.swing.JFrame {
 
     Usuarios nuevoUsuario;
+    ArrayList<Usuarios> arrayUsuarios;
 
     public Banco() {
+    }
+
+    public Banco(ArrayList<Usuarios> arrayUsuarios) {
+        this.arrayUsuarios = arrayUsuarios;
         initComponents();
     }
 
@@ -103,9 +109,12 @@ public class Banco extends javax.swing.JFrame {
 
     private void BotonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIniciarActionPerformed
         TransaccionGUI trans = new TransaccionGUI();
-        if (TextUsuario.getText().equals(nuevoUsuario.getNombreDeUsuario()) && TextContrasena.getText().equals(nuevoUsuario.getContrasena())) {
-            trans.setVisible(true);
-        } else {
+        for (Usuarios arrayUsuario : arrayUsuarios) {
+            if (arrayUsuario.getNombreDeUsuario().equals(TextUsuario.getText()) && arrayUsuario.getContrasena().equals(TextContrasena.getText())) {
+                trans.setVisible(true);
+            }
+        }
+        if (!trans.isVisible()) {
             JOptionPane.showMessageDialog(rootPane, "Nombre de Usuario o Contrasena Incorrecta");
         }
     }//GEN-LAST:event_BotonIniciarActionPerformed

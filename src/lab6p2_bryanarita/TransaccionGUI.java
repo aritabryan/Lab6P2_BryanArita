@@ -32,6 +32,11 @@ public class TransaccionGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         BOTONretirar.setText("RETIRAR DINERO");
+        BOTONretirar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BOTONretirarActionPerformed(evt);
+            }
+        });
 
         BOTONdepositar.setText("DEPOSITAR/TRANSFERIR");
 
@@ -58,6 +63,11 @@ public class TransaccionGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BOTONretirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BOTONretirarActionPerformed
+        RetirarDineroFrame retFrame= new RetirarDineroFrame();
+        retFrame.setVisible(true);
+    }//GEN-LAST:event_BOTONretirarActionPerformed
 
     /**
      * @param args the command line arguments
